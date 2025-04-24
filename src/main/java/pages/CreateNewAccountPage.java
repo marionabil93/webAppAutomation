@@ -34,8 +34,8 @@ public class CreateNewAccountPage extends BasePage {
     WebElement createAccountBtn;
 
 
-    @FindBy(xpath = "//span[@class='logged-in']")
-    WebElement accountName;
+    @FindBy(xpath = "//div[@data-ui-id='message-success']")
+    WebElement loginSuccessMsg;
 
     public void enterFirstName(String user) {
         enterText(firstName,user);
@@ -61,8 +61,7 @@ public class CreateNewAccountPage extends BasePage {
 
 
     public void verifyLoginSuccess() {
-        waitingElementToView(accountName);
-        String actualText = accountName.getText();
+        String actualText = loginSuccessMsg.getText();
         Assert.assertTrue(actualText.contains(ConfigReader.getProperty("loginSuccess")) , "Login Success !");
     }
 
@@ -74,13 +73,13 @@ public class CreateNewAccountPage extends BasePage {
 
 
     public void registerUser() {
-        createAccountButton.click();
+        clickElement(createAccountButton);
         enterFirstName(ConfigReader.getProperty("firstName"));
         enterLastName(ConfigReader.getProperty("lastName"));
         enterEmail(generateRandomMail());
         enterPassword(ConfigReader.getProperty("password"));
         enterConfirmPassword(ConfigReader.getProperty("confirmPassword"));
-        createAccountBtn.click();
+        clickElement(createAccountBtn);
     }
 
 

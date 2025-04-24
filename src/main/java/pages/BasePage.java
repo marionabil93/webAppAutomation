@@ -38,11 +38,6 @@ public class BasePage {
         js.executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
-    public void scrollInWindow(WebElement element) {
-        js.executeScript("window.scrollBy(0,500)", "");
-        wait.until(ExpectedConditions.visibilityOf(element));
-    }
-
     // Click using JavaScript
     public void clickUsingJS(WebElement element) {
         js.executeScript("arguments[0].click();", element);

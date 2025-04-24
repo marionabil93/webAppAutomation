@@ -42,7 +42,7 @@ public class addHotSellersToCompare extends BasePage{
             Actions actions = new Actions(driver);
             actions.moveToElement(product).perform();
             waitingElementToView(compareBtn);
-            compareBtn.click();
+            clickElement(compareBtn);
 
             // Wait and assert
             waitingElementToView(compareMessage);    // Small wait to ensure UI updates
